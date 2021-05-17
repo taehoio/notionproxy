@@ -5,4 +5,9 @@
 .notion-page-icon-wrapper {
   left: inherit;
   display: block;
+  width: auto;
+}
+
+.notion-page-icon-wrapper {
+  width: auto;
 }
