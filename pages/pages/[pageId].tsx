@@ -2,6 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 
 import { getPageTitle, getAllPagesInSpace, getBlockTitle } from 'notion-utils'
+import { ExtendedRecordMap } from 'notion-types'
 import { NotionAPI } from 'notion-client'
 import { NotionRenderer } from 'react-notion-x'
 
@@ -56,14 +57,16 @@ export async function getStaticPaths() {
   }
 }
 
-export default function NotionPage({ recordMap }) {
-  if (!recordMap) {
-    return null
-  }
+interface PageInfo {
+  title: string;
+  description: string;
+  imageUrl: string;
+}
 
-  const title = getPageTitle(recordMap)
-  var description: string = '';
-  var imageUrl: string = '';
+function getPageInfo(recordMap: ExtendedRecordMap): PageInfo {
+  const title = getPageTitle(recordMap);
+  let description = '';
+  let imageUrl = '';
 
   for (let k in recordMap.block) {
     let v = recordMap.block[k];
@@ -81,33 +84,47 @@ export default function NotionPage({ recordMap }) {
         imageUrl = block?.properties?.source?.flat()[0];
       }
     }
+
+    return {
+      title,
+      description,
+      imageUrl,
+    }
+  }
+}
+
+function isTextType(block: { type: string }) {
+  let textTypes: string[] = ['sub_header', 'quote', 'text']
+  if (textTypes.includes(block.type)) {
+    return true;
+  }
+  return false;
+}
+
+function isImageType(block: { type: string }) {
+  let imageTypes: string[] = ['image']
+  if (imageTypes.includes(block.type)) {
+    return true;
+  }
+  return false;
+}
+
+export default function NotionPage({ recordMap }) {
+  if (!recordMap) {
+    return null
   }
 
-  function isTextType(block: { type: string }) {
-    let textTypes: string[] = ['sub_header', 'quote', 'text']
-    if (textTypes.includes(block.type)) {
-      return true;
-    }
-    return false;
-  }
-
-  function isImageType(block: { type: string }) {
-    let imageTypes: string[] = ['image']
-    if (imageTypes.includes(block.type)) {
-      return true;
-    }
-    return false;
-  }
+  const pageInfo = getPageInfo(recordMap);
 
   return (
     <>
       <Head>
         <meta name='author' content='Taeho Kim' />
-        <meta name='description' content={description} />
-        <meta property='og:title' content={title} />
-        <meta property='og:description' content={description} />
-        <meta property='og:image' content={imageUrl} />
-        <title>{title}</title>
+        <meta name='description' content={pageInfo.description} />
+        <meta property='og:title' content={pageInfo.title} />
+        <meta property='og:description' content={pageInfo.description} />
+        <meta property='og:image' content={pageInfo.imageUrl} />
+        <title>{pageInfo.title}</title>
       </Head>
 
       <NotionRenderer recordMap={recordMap} fullPage={true} darkMode={true} mapPageUrl={path => '/pages/' + path} />
