@@ -68,12 +68,14 @@ function getPageInfo(recordMap: ExtendedRecordMap): PageInfo {
   let description = '';
   let imageUrl = '';
 
+  console.log(recordMap);
   for (const k in recordMap.block) {
     const v = recordMap.block[k];
     const block = v.value;
 
     if (isTextType(block)) {
       const blockTitle = getBlockTitle(block, recordMap);
+      console.log(blockTitle);
       if (blockTitle) {
         description += blockTitle + ' \n';
       }
@@ -84,13 +86,13 @@ function getPageInfo(recordMap: ExtendedRecordMap): PageInfo {
         imageUrl = block?.properties?.source?.flat()[0];
       }
     }
-
-    return {
-      title,
-      description,
-      imageUrl,
-    };
   }
+
+  return {
+    title,
+    description,
+    imageUrl,
+  };
 }
 
 function isTextType(block: { type: string }) {
@@ -115,6 +117,7 @@ export default function NotionPage({ recordMap }) {
   }
 
   const pageInfo = getPageInfo(recordMap);
+  console.log(pageInfo);
 
   return (
     <>
