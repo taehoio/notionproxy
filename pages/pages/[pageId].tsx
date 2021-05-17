@@ -5,7 +5,8 @@ import { getPageTitle, getAllPagesInSpace, getBlockTitle } from 'notion-utils'
 import { NotionAPI } from 'notion-client'
 import { NotionRenderer } from 'react-notion-x'
 
-const isDev = process.env.NODE_ENV === 'development' || !process.env.NODE_ENV
+const isDevelopmentEnv = process.env.NODE_ENV === 'development' || !process.env.NODE_ENV;
+const isProductionEnv = process.env.NODE_ENV === 'production';
 
 const notion = new NotionAPI()
 
@@ -22,7 +23,7 @@ export const getStaticProps = async (context) => {
 }
 
 export async function getStaticPaths() {
-  if (isDev) {
+  if (isDevelopmentEnv) {
     return {
       paths: [],
       fallback: true
@@ -47,7 +48,7 @@ export async function getStaticPaths() {
     }
   )
 
-  const paths = Object.keys(pages).map((pageId) => `/${pageId}`)
+  const paths = Object.keys(pages).map((pageId) => `/pages/${pageId}`)
 
   return {
     paths,
@@ -109,7 +110,7 @@ export default function NotionPage({ recordMap }) {
         <title>{title}</title>
       </Head>
 
-      <NotionRenderer recordMap={recordMap} fullPage={true} darkMode={true} />
+      <NotionRenderer recordMap={recordMap} fullPage={true} darkMode={true} mapPageUrl={path => '/pages/' + path} />
     </>
   )
 }
