@@ -1,3 +1,8 @@
 .notion {
   font-size: 18px;
 }
+
+.notion-page-icon-wrapper {
+  left: inherit;
+  display: block;
+}

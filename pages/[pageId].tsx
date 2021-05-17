@@ -29,7 +29,7 @@ export async function getStaticPaths() {
     }
   }
 
-  // 'hello, i'm taeho' notion page id.
+  // 'Hello, I'm Taeho.' notion page id.
   const rootNotionPageId = '6ca2dd5e221448738ffad634d8ebbb53'
   // 'taehoio' notion space id.
   const rootNotionSpaceId = 'f2b37586-33c0-4236-bab4-a87c12f0d6e9'
