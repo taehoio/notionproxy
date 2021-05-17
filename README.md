@@ -7,3 +7,5 @@
 * <https://github.com/NotionX/react-notion-x>
 * <https://github.com/transitive-bullshit/nextjs-notion-starter-kit>
 * <https://react-notion-x-demo.transitivebullsh.it/>
+* <https://super.so/>
+* <https://www.oopy.io/>
