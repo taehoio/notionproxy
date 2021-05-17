@@ -60,30 +60,24 @@ export async function getStaticPaths() {
 interface PageInfo {
   title: string;
   description: string;
-  imageUrl: string;
 }
 
 function getPageInfo(recordMap: ExtendedRecordMap): PageInfo {
   const title = getPageTitle(recordMap);
   let description = '';
-  let imageUrl = '';
 
-  console.log(recordMap);
   for (const k in recordMap.block) {
     const v = recordMap.block[k];
     const block = v.value;
 
     if (isTextType(block)) {
       const blockTitle = getBlockTitle(block, recordMap);
-      console.log(blockTitle);
       if (blockTitle) {
-        description += blockTitle + ' \n';
-      }
-    }
-
-    if (isImageType(block)) {
-      if (!imageUrl) {
-        imageUrl = block?.properties?.source?.flat()[0];
+        description += blockTitle;
+        if (blockTitle[blockTitle.length - 1] !== '.') {
+          description += '.';
+        }
+        description += ' ';
       }
     }
   }
@@ -91,7 +85,6 @@ function getPageInfo(recordMap: ExtendedRecordMap): PageInfo {
   return {
     title,
     description,
-    imageUrl,
   };
 }
 
@@ -103,30 +96,18 @@ function isTextType(block: { type: string }) {
   return false;
 }
 
-function isImageType(block: { type: string }) {
-  const imageTypes: string[] = ['image'];
-  if (imageTypes.includes(block.type)) {
-    return true;
-  }
-  return false;
-}
-
 export default function NotionPage({ recordMap }) {
   if (!recordMap) {
     return null;
   }
 
   const pageInfo = getPageInfo(recordMap);
-  console.log(pageInfo);
 
   return (
     <>
       <Head>
-        <meta name="author" content="Taeho Kim" />
-        <meta name="description" content={pageInfo.description} />
         <meta property="og:title" content={pageInfo.title} />
         <meta property="og:description" content={pageInfo.description} />
-        <meta property="og:image" content={pageInfo.imageUrl} />
         <title>{pageInfo.title}</title>
       </Head>
 
