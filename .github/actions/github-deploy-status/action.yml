@@ -1,0 +1,16 @@
+name: 'GitHub Deployment Status'
+description: 'Modify a GitHub deployment status'
+inputs:
+  state:
+    description: 'The deployment state'
+    required: true
+  description:
+    description: 'The deployment description'
+    required: false
+    default: 'Deploying from GitHub Actions'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.state }}
+    - ${{ inputs.description }}
