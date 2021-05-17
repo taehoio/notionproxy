@@ -6,8 +6,7 @@ import { ExtendedRecordMap } from 'notion-types';
 import { NotionAPI } from 'notion-client';
 import { NotionRenderer } from 'react-notion-x';
 
-const isDevelopmentEnv =
-  process.env.NODE_ENV === 'development' || !process.env.NODE_ENV;
+import { isDevelopmentEnv } from '../../const';
 
 const notion = new NotionAPI();
 
