@@ -61,8 +61,6 @@ export default function NotionPage({ recordMap }) {
   }
 
   const title = getPageTitle(recordMap)
-  console.log(title, recordMap)
-
   var description: string = '';
   var imageUrl: string = '';
 
