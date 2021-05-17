@@ -8,7 +8,6 @@ import { NotionRenderer } from 'react-notion-x';
 
 const isDevelopmentEnv =
   process.env.NODE_ENV === 'development' || !process.env.NODE_ENV;
-const isProductionEnv = process.env.NODE_ENV === 'production';
 
 const notion = new NotionAPI();
 
