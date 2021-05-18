@@ -19,7 +19,7 @@ FROM node:alpine AS runner
 WORKDIR /app
 
 # To support Google Cloud Profiler
-RUN apk add --no-cache ca-certificates python3
+RUN apk add --no-cache ca-certificates python3 && ln -sf python3 /usr/bin/python
 
 ENV NODE_ENV production
 
