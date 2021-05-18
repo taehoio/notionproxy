@@ -18,6 +18,8 @@ RUN npm prune --production
 FROM node:alpine AS runner
 WORKDIR /app
 
+RUN apk add --no-cache ca-certificates
+
 ENV NODE_ENV production
 
 RUN addgroup -g 1001 -S nodejs
