@@ -18,7 +18,8 @@ RUN npm prune --production
 FROM node:alpine AS runner
 WORKDIR /app
 
-RUN apk add --no-cache ca-certificates
+# To support Google Cloud Profiler
+RUN apk add --no-cache ca-certificates python3
 
 ENV NODE_ENV production
 
