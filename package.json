@@ -3,17 +3,17 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node --require ./server-preload.js ./node_modules/.bin/next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node --require ./server-preload.js ./node_modules/.bin/next start",
     "analyze": "cross-env ANALYZE=true next build",
     "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
     "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build",
-    "deploy": "vercel --prod",
     "lint": "eslint '**/*.{ts,tsx}'",
     "format": "eslint '**/*.{ts,tsx}' --fix"
   },
   "dependencies": {
+    "@google-cloud/profiler": "^4.1.2",
     "next": "^10.2.0",
     "notion-client": "^4.6.0",
     "notion-utils": "^4.6.0",
