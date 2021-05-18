@@ -1,7 +1,8 @@
 # Install dependencies only when needed
 FROM node:alpine AS deps
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-RUN apk add --no-cache libc6-compat
+# python3 and build-base are needed to support Google Cloud Profiler.
+RUN apk add --no-cache libc6-compat python3 build-base
 WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
@@ -18,8 +19,6 @@ RUN npm prune --production
 FROM node:alpine AS runner
 WORKDIR /app
 
-# To support Google Cloud Profiler
-RUN apk add --no-cache ca-certificates python3 && ln -sf python3 /usr/bin/python
 
 ENV NODE_ENV production
 
