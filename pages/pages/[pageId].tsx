@@ -105,7 +105,7 @@ export default function NotionPage({ recordMap }) {
 
   const router = useRouter();
   const { pageId } = router.query;
-  const imageUrl = `/images/thumbnails/pages/${pageId}.png`;
+  const imageUrl = `https://taeho.io/images/thumbnails/pages/${pageId}.png`;
 
   return (
     <>

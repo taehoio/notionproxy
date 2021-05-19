@@ -15,4 +15,5 @@ module.exports = withBundleAnalyzer({
       },
     ];
   },
+  env: {},
 });
