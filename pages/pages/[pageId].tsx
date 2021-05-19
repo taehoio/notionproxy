@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import getConfig from 'next/config';
 import { useRouter } from 'next/router';
 
 import { getPageTitle, getAllPagesInSpace, getBlockTitle } from 'notion-utils';
@@ -107,16 +108,22 @@ export default function NotionPage({ recordMap }) {
   const { pageId } = router.query;
   const imageUrl = `https://taeho.io/images/thumbnails/pages/${pageId}.png`;
 
+  const { publicRuntimeConfig } = getConfig();
+
   return (
     <>
       <Head>
         <meta property="og:title" content={pageInfo.title} />
         <meta property="og:description" content={pageInfo.description} />
-        <meta property="og:image" content={imageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={pageInfo.title} />
         <meta name="twitter:description" content={pageInfo.description} />
-        <meta name="twitter:image" content={imageUrl} />
+        {publicRuntimeConfig.pageIdsThatHaveThumnail.includes(pageId) ? (
+          <>
+            <meta property="og:image" content={imageUrl} />
+            <meta property="twitter:image" content={imageUrl} />
+          </>
+        ) : null}
         <title>{pageInfo.title}</title>
       </Head>
 

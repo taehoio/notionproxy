@@ -1,9 +1,17 @@
 // @ts-check
 'use strict';
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+/* eslint-disable @typescript-eslint/no-var-requires */
+const fs = require('fs');
+
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
+});
+
+const pageIdsThatHaveThumnail = [];
+
+fs.readdirSync('./public/images/thumbnails/pages/').forEach((filename) => {
+  pageIdsThatHaveThumnail.push(filename.split('.')[0]);
 });
 
 module.exports = withBundleAnalyzer({
@@ -16,4 +24,7 @@ module.exports = withBundleAnalyzer({
     ];
   },
   env: {},
+  publicRuntimeConfig: {
+    pageIdsThatHaveThumnail,
+  },
 });
