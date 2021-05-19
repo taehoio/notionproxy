@@ -1,5 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import fs from 'fs';
 
 import { getPageTitle, getAllPagesInSpace, getBlockTitle } from 'notion-utils';
 import { ExtendedRecordMap } from 'notion-types';
@@ -102,11 +104,18 @@ export default function NotionPage({ recordMap }) {
 
   const pageInfo = getPageInfo(recordMap);
 
+  const router = useRouter();
+  const { pageId } = router.query;
+
   return (
     <>
       <Head>
         <meta property="og:title" content={pageInfo.title} />
         <meta property="og:description" content={pageInfo.description} />
+        <meta
+          property="og:image"
+          content={`/images/thumbnails/pages/${pageId}.png`}
+        />
         <title>{pageInfo.title}</title>
       </Head>
 

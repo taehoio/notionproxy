@@ -8,7 +8,7 @@ function setUpGoogleCloudProfiler() {
   require('@google-cloud/profiler').start({
     serviceContext: {
       service: 'notionproxy',
-    }
+    },
   });
 }
 
