@@ -25,6 +25,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "next.config.js",
     "server-preload.js"
   ]
 }
