@@ -1,7 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import fs from 'fs';
 
 import { getPageTitle, getAllPagesInSpace, getBlockTitle } from 'notion-utils';
 import { ExtendedRecordMap } from 'notion-types';
