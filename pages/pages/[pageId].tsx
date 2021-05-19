@@ -32,7 +32,7 @@ export async function getStaticPaths() {
   }
 
   // 'Hello, I'm Taeho.' notion page id.
-  const rootNotionPageId = '6ca2dd5e221448738ffad634d8ebbb53';
+  const rootNotionPageId = '6ca2dd5e-2214-4873-8ffa-d634d8ebbb53';
   // 'taehoio' notion space id.
   const rootNotionSpaceId = 'f2b37586-33c0-4236-bab4-a87c12f0d6e9';
 
