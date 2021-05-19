@@ -105,16 +105,18 @@ export default function NotionPage({ recordMap }) {
 
   const router = useRouter();
   const { pageId } = router.query;
+  const imageUrl = `/images/thumbnails/pages/${pageId}.png`;
 
   return (
     <>
       <Head>
         <meta property="og:title" content={pageInfo.title} />
         <meta property="og:description" content={pageInfo.description} />
-        <meta
-          property="og:image"
-          content={`/images/thumbnails/pages/${pageId}.png`}
-        />
+        <meta property="og:image" content={imageUrl} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageInfo.title} />
+        <meta name="twitter:description" content={pageInfo.description} />
+        <meta name="twitter:image" content={imageUrl} />
         <title>{pageInfo.title}</title>
       </Head>
 
