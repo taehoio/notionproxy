@@ -97,11 +97,6 @@ function isTextType(block: { type: string }) {
   return false;
 }
 
-function isOnBrowser(): boolean {
-  console.log(typeof window);
-  return typeof window === 'undefined';
-}
-
 export default function NotionPage({ recordMap }) {
   if (!recordMap) {
     return null;
@@ -110,17 +105,9 @@ export default function NotionPage({ recordMap }) {
   const router = useRouter();
   const { pageId } = router.query;
 
-  const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
-
-  console.log(isOnBrowser());
-  const runtimeConfig = isOnBrowser()
-    ? serverRuntimeConfig
-    : publicRuntimeConfig;
-  console.log(getConfig());
-  console.log(runtimeConfig);
-  console.log(publicRuntimeConfig);
+  const { publicRuntimeConfig } = getConfig();
   const hasThumbnail: boolean =
-    runtimeConfig?.pageIdsThatHaveThumnail?.includes(pageId);
+    publicRuntimeConfig?.pageIdsThatHaveThumnail?.includes(pageId);
   const imageUrl = `https://taeho.io/images/thumbnails/pages/${pageId}.png`;
 
   const pageInfo = getPageInfo(recordMap);
