@@ -4,17 +4,13 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const fs = require('fs');
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
-
 const pageIdsThatHaveThumnail = [];
 
 fs.readdirSync('./public/images/thumbnails/pages/').forEach((filename) => {
   pageIdsThatHaveThumnail.push(filename.split('.')[0]);
 });
 
-module.exports = withBundleAnalyzer({
+let nextConfig = {
   async rewrites() {
     return [
       {
@@ -24,7 +20,20 @@ module.exports = withBundleAnalyzer({
     ];
   },
   env: {},
+  serverRuntimeConfig: {
+    pageIdsThatHaveThumnail,
+  },
   publicRuntimeConfig: {
     pageIdsThatHaveThumnail,
   },
-});
+};
+
+module.exports = nextConfig;
+
+if (process.env.ANALYZE === 'true') {
+  const withBundleAnalyzer = require('@next/bundle-analyzer')({
+    enabled: process.env.ANALYZE === 'true',
+  });
+
+  module.exports = withBundleAnalyzer(nextConfig);
+}

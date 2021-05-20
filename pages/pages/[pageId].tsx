@@ -107,7 +107,7 @@ export default function NotionPage({ recordMap }) {
 
   const { publicRuntimeConfig } = getConfig();
   const hasThumbnail: boolean =
-    publicRuntimeConfig.pageIdsThatHaveThumnail.includes(pageId);
+    publicRuntimeConfig?.pageIdsThatHaveThumnail?.includes(pageId);
   const imageUrl = `https://taeho.io/images/thumbnails/pages/${pageId}.png`;
 
   const pageInfo = getPageInfo(recordMap);
@@ -120,7 +120,7 @@ export default function NotionPage({ recordMap }) {
         {hasThumbnail ? <meta property="og:image" content={imageUrl} /> : null}
         <meta
           name="twitter:card"
-          content={hasThumbnail ? 'summary' : 'summary_large_image'}
+          content={hasThumbnail ? 'summary_large_image' : 'summary'}
         />
         <meta name="twitter:title" content={pageInfo.title} />
         <meta name="twitter:description" content={pageInfo.description} />
