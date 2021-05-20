@@ -97,6 +97,11 @@ function isTextType(block: { type: string }) {
   return false;
 }
 
+function isOnBrowser(): boolean {
+  console.log(typeof window);
+  return typeof window === 'undefined';
+}
+
 export default function NotionPage({ recordMap }) {
   if (!recordMap) {
     return null;
@@ -105,9 +110,17 @@ export default function NotionPage({ recordMap }) {
   const router = useRouter();
   const { pageId } = router.query;
 
-  const { publicRuntimeConfig } = getConfig();
+  const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
+
+  console.log(isOnBrowser());
+  const runtimeConfig = isOnBrowser()
+    ? serverRuntimeConfig
+    : publicRuntimeConfig;
+  console.log(getConfig());
+  console.log(runtimeConfig);
+  console.log(publicRuntimeConfig);
   const hasThumbnail: boolean =
-    publicRuntimeConfig.pageIdsThatHaveThumnail.includes(pageId);
+    runtimeConfig?.pageIdsThatHaveThumnail?.includes(pageId);
   const imageUrl = `https://taeho.io/images/thumbnails/pages/${pageId}.png`;
 
   const pageInfo = getPageInfo(recordMap);
@@ -120,7 +133,7 @@ export default function NotionPage({ recordMap }) {
         {hasThumbnail ? <meta property="og:image" content={imageUrl} /> : null}
         <meta
           name="twitter:card"
-          content={hasThumbnail ? 'summary' : 'summary_large_image'}
+          content={hasThumbnail ? 'summary_large_image' : 'summary'}
         />
         <meta name="twitter:title" content={pageInfo.title} />
         <meta name="twitter:description" content={pageInfo.description} />

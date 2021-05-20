@@ -24,6 +24,9 @@ module.exports = withBundleAnalyzer({
     ];
   },
   env: {},
+  serverRuntimeConfig: {
+    pageIdsThatHaveThumnail,
+  },
   publicRuntimeConfig: {
     pageIdsThatHaveThumnail,
   },
