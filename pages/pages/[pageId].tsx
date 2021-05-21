@@ -112,29 +112,33 @@ export default function NotionPage({ recordMap }) {
 
   const pageInfo = getPageInfo(recordMap);
 
+  const childrenOfHead = (
+    <>
+      <meta property="og:title" content={pageInfo.title} />
+      <meta property="og:description" content={pageInfo.description} />
+      {hasThumbnail ? <meta property="og:image" content={imageUrl} /> : null}
+      <meta
+        name="twitter:card"
+        content={hasThumbnail ? 'summary_large_image' : 'summary'}
+      />
+      <meta name="twitter:title" content={pageInfo.title} />
+      <meta name="twitter:description" content={pageInfo.description} />
+      {hasThumbnail ? (
+        <meta property="twitter:image" content={imageUrl} />
+      ) : null}
+      <title>{pageInfo.title}</title>
+    </>
+  );
+
   return (
     <>
-      <Head>
-        <meta property="og:title" content={pageInfo.title} />
-        <meta property="og:description" content={pageInfo.description} />
-        {hasThumbnail ? <meta property="og:image" content={imageUrl} /> : null}
-        <meta
-          name="twitter:card"
-          content={hasThumbnail ? 'summary_large_image' : 'summary'}
-        />
-        <meta name="twitter:title" content={pageInfo.title} />
-        <meta name="twitter:description" content={pageInfo.description} />
-        {hasThumbnail ? (
-          <meta property="twitter:image" content={imageUrl} />
-        ) : null}
-        <title>{pageInfo.title}</title>
-      </Head>
+      <Head children={childrenOfHead} />
 
       <NotionRenderer
         recordMap={recordMap}
         fullPage={true}
         darkMode={true}
-        mapPageUrl={(path) => '/pages/' + path}
+        mapPageUrl={(path: string) => '/pages/' + path}
       />
     </>
   );
