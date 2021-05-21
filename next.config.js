@@ -10,7 +10,7 @@ fs.readdirSync('./public/images/thumbnails/pages/').forEach((filename) => {
   pageIdsThatHaveThumnail.push(filename.split('.')[0]);
 });
 
-let nextConfig = {
+const nextConfig = {
   async rewrites() {
     return [
       {
