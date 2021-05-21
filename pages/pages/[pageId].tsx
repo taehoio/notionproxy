@@ -138,7 +138,7 @@ export default function NotionPage({ recordMap }) {
         recordMap={recordMap}
         fullPage={true}
         darkMode={true}
-        mapPageUrl={(path) => '/pages/' + path}
+        mapPageUrl={(path: string) => '/pages/' + path}
       />
     </>
   );
