@@ -1,4 +1,7 @@
 
+/cypress/screenshots/
+/cypress/videos/
+
 # Created by https://www.toptal.com/developers/gitignore/api/node,go,macos,linux,windows,vim,visualstudiocode,intellij+all
 # Edit at https://www.toptal.com/developers/gitignore?templates=node,go,macos,linux,windows,vim,visualstudiocode,intellij+all
 
