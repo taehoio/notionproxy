@@ -1,5 +1,4 @@
 export const gaTraceId = 'G-HDWXJVK15N';
 
-export const isDevelopmentEnv =
+export const isDev =
   process.env.NODE_ENV === 'development' || !process.env.NODE_ENV;
-export const isProductionEnv = process.env.NODE_ENV === 'production';

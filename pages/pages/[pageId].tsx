@@ -12,8 +12,7 @@ import {
   CollectionRow,
   NotionRenderer,
 } from 'react-notion-x';
-
-import { isDevelopmentEnv } from '../../const';
+import { env } from 'process';
 
 const notion = new NotionAPI();
 
@@ -30,7 +29,7 @@ export const getStaticProps = async (context) => {
 };
 
 export async function getStaticPaths() {
-  if (isDevelopmentEnv) {
+  if (process.env.NODE_ENV !== 'production') {
     return {
       paths: [],
       fallback: true,
