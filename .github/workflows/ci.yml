@@ -34,7 +34,7 @@ jobs:
         run: yarn lint
 
   integration-test:
-    name: Integration Tests
+    name: Integration tests
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
