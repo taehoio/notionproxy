@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { getPageTitle, getAllPagesInSpace, getBlockTitle } from 'notion-utils';
 import { ExtendedRecordMap } from 'notion-types';
 import { NotionAPI } from 'notion-client';
-import { NotionRenderer } from 'react-notion-x';
+import { Code, Collection, CollectionRow, NotionRenderer } from 'react-notion-x';
 
 import { isDevelopmentEnv } from '../../const';
 
@@ -91,7 +91,7 @@ function getPageInfo(recordMap: ExtendedRecordMap): PageInfo {
 
 function isTextType(block: { type: string }) {
   const textTypes: string[] = ['sub_header', 'quote', 'text'];
-  if (textTypes.includes(block.type)) {
+  if (textTypes.includes(block?.type)) {
     return true;
   }
   return false;
@@ -139,6 +139,11 @@ export default function NotionPage({ recordMap }) {
         fullPage={true}
         darkMode={true}
         mapPageUrl={(path: string) => '/pages/' + path}
+        components={{
+          collection: Collection,
+          collectionRow: CollectionRow,
+          code: Code,
+        }}
       />
     </>
   );
