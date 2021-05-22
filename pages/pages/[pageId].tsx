@@ -12,7 +12,6 @@ import {
   CollectionRow,
   NotionRenderer,
 } from 'react-notion-x';
-import { env } from 'process';
 
 const notion = new NotionAPI();
 
