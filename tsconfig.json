@@ -19,13 +19,13 @@
     "jsx": "preserve"
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    ".next",
+    "public"
   ],
   "include": [
-    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "next.config.js",
-    "server-preload.js"
+    "**/*.js"
   ]
 }
