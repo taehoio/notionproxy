@@ -6,7 +6,12 @@ import { useRouter } from 'next/router';
 import { getPageTitle, getAllPagesInSpace, getBlockTitle } from 'notion-utils';
 import { ExtendedRecordMap } from 'notion-types';
 import { NotionAPI } from 'notion-client';
-import { Code, Collection, CollectionRow, NotionRenderer } from 'react-notion-x';
+import {
+  Code,
+  Collection,
+  CollectionRow,
+  NotionRenderer,
+} from 'react-notion-x';
 
 import { isDevelopmentEnv } from '../../const';
 
