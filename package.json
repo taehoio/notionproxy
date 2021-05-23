@@ -15,6 +15,9 @@
   },
   "dependencies": {
     "@google-cloud/profiler": "^4.1.2",
+    "@opencensus/exporter-ocagent": "^0.0.22",
+    "@opencensus/exporter-stackdriver": "^0.0.22",
+    "@opencensus/nodejs": "^0.0.22",
     "next": "^10.2.0",
     "notion-client": "^4.6.2",
     "notion-utils": "^4.6.2",
