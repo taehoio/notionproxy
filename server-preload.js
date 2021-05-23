@@ -14,17 +14,7 @@ function setUpGoogleCloudProfiler() {
 }
 
 function setUpGoogleCloudTracing() {
-  const { OCAgentExporter } = require('@opencensus/exporter-ocagent');
-  const exporter = new OCAgentExporter({
-    serviceName: serviceName,
-  });
-
-  const tracing = require('@opencensus/nodejs');
-  tracing.start({
-    exporter: exporter,
-    samplingRate: 1.0,
-    logLevel: 1,
-  });
+  require('@google-cloud/trace-agent').start();
 }
 
 if (process.env.SHOULD_PROFILE) {
