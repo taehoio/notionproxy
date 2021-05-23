@@ -21,6 +21,7 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 ENV SHOULD_PROFILE=true
+ENV SHOULD_TRACE=true
 
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
