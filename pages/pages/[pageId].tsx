@@ -13,8 +13,6 @@ import {
   NotionRenderer,
 } from 'react-notion-x';
 
-import { rootNotionPageId, rootNotionSpaceId } from '../../const';
-
 const notion = new NotionAPI();
 
 export const getStaticProps = async (context) => {
@@ -37,13 +35,15 @@ export async function getStaticPaths() {
     };
   }
 
+  const { publicRuntimeConfig } = getConfig();
+
   // This crawls all public pages starting from the given root page in order
   // for next.js to pre-generate all pages via static site generation (SSG).
   // This is a useful optimization but not necessary; you could just as easily
   // set paths to an empty array to not pre-generate any pages at build time.
   const pages = await getAllPagesInSpace(
-    rootNotionPageId,
-    rootNotionSpaceId,
+    publicRuntimeConfig.rootNotionPageId,
+    publicRuntimeConfig.rootNotionSpaceId,
     notion.getPage.bind(notion),
     {
       traverseCollections: false,
@@ -139,18 +139,19 @@ export default function NotionPage({ recordMap }) {
       <title>{pageInfo.title}</title>
       <meta property="og:title" content={pageInfo.titleWithIcon} />
       <meta property="og:description" content={pageInfo.description} />
-      {hasThumbnail ? <meta property="og:image" content={imageUrl} /> : null}
+      {hasThumbnail && <meta property="og:image" content={imageUrl} />}
       <meta
         name="twitter:card"
         content={hasThumbnail ? 'summary_large_image' : 'summary'}
       />
       <meta name="twitter:title" content={pageInfo.titleWithIcon} />
       <meta name="twitter:description" content={pageInfo.description} />
-      {hasThumbnail ? (
-        <meta property="twitter:image" content={imageUrl} />
-      ) : null}
+      {hasThumbnail && <meta property="twitter:image" content={imageUrl} />}
     </>
   );
+
+  console.log(publicRuntimeConfig);
+  console.log(pageId);
 
   return (
     <>
@@ -168,16 +169,15 @@ export default function NotionPage({ recordMap }) {
         }}
       />
 
-      {pageId !== rootNotionPageId ? (
-        <script
-          src="https://utteranc.es/client.js"
-          data-repo="taehoio/notionproxy-utterances"
-          data-issue-term="pathname"
-          data-theme="github-dark"
-          crossOrigin="anonymous"
-          async
-        ></script>
-      ) : null}
+      <script
+        src="https://utteranc.es/client.js"
+        data-repo="taehoio/notionproxy-utterances"
+        data-issue-term="pathname"
+        data-label="notionproxy-comment"
+        data-theme="github-dark"
+        date-crossorigin="anonymous"
+        async
+      ></script>
     </>
   );
 }
