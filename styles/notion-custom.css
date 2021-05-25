@@ -18,3 +18,8 @@
 .notion-page-icon-wrapper {
   width: auto;
 }
+
+.utterances {
+  width: 95%;
+  max-width: 700px;
+}
