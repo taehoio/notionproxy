@@ -7,6 +7,8 @@ import 'react-notion-x/src/styles.css';
 
 import '../styles/notion-custom.css';
 
+import '../styles/utterances.css';
+
 // used for code syntax highlighting (optional)
 import 'prismjs/themes/prism-tomorrow.css';
 

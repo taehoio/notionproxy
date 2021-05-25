@@ -19,7 +19,6 @@
   width: auto;
 }
 
-.utterances {
-  width: 95%;
-  max-width: 700px;
+.notion-collection-card-property:first-child {
+  font-size: 18px;
 }
