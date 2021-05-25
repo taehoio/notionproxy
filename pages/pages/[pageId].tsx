@@ -150,9 +150,6 @@ export default function NotionPage({ recordMap }) {
     </>
   );
 
-  console.log(publicRuntimeConfig);
-  console.log(pageId);
-
   return (
     <>
       <Head children={childrenOfHead} />
