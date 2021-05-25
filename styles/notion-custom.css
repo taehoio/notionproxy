@@ -22,3 +22,7 @@
 .notion-collection-card-property:first-child {
   font-size: 18px;
 }
+
+.notion-full-page {
+  padding-bottom: calc(max(5vh, 50px));
+}
