@@ -61,15 +61,32 @@ export async function getStaticPaths() {
 interface PageInfo {
   title: string;
   description: string;
+  pageIcon: string;
+  titleWithIcon: string;
+}
+
+function isEmoji(s: string): boolean {
+  // https://css-tricks.com/weekly-platform-news-emoji-string-length-issues-with-rounded-buttons-bundled-exchanges/
+  return s.length > 0 && s.length <= 7;
 }
 
 function getPageInfo(recordMap: ExtendedRecordMap): PageInfo {
   const title = getPageTitle(recordMap);
   let description = '';
+  let pageIcon = '';
 
+  let isFirstPage = true;
   for (const k in recordMap.block) {
     const v = recordMap.block[k];
     const block = v.value;
+
+    if (block?.type === 'page' && isFirstPage) {
+      isFirstPage = false;
+
+      if (isEmoji(block?.format?.page_icon)) {
+        pageIcon = block?.format?.page_icon;
+      }
+    }
 
     if (isTextType(block)) {
       const blockTitle = getBlockTitle(block, recordMap);
@@ -86,6 +103,8 @@ function getPageInfo(recordMap: ExtendedRecordMap): PageInfo {
   return {
     title,
     description,
+    pageIcon,
+    titleWithIcon: pageIcon ? `${pageIcon} ${title}` : title,
   };
 }
 
@@ -114,19 +133,19 @@ export default function NotionPage({ recordMap }) {
 
   const childrenOfHead = (
     <>
-      <meta property="og:title" content={pageInfo.title} />
+      <title>{pageInfo.title}</title>
+      <meta property="og:title" content={pageInfo.titleWithIcon} />
       <meta property="og:description" content={pageInfo.description} />
       {hasThumbnail ? <meta property="og:image" content={imageUrl} /> : null}
       <meta
         name="twitter:card"
         content={hasThumbnail ? 'summary_large_image' : 'summary'}
       />
-      <meta name="twitter:title" content={pageInfo.title} />
+      <meta name="twitter:title" content={pageInfo.titleWithIcon} />
       <meta name="twitter:description" content={pageInfo.description} />
       {hasThumbnail ? (
         <meta property="twitter:image" content={imageUrl} />
       ) : null}
-      <title>{pageInfo.title}</title>
     </>
   );
 
