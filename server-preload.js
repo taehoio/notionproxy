@@ -13,7 +13,7 @@ function setUpGoogleCloudProfiler() {
   });
 }
 
-function setUpGoogleCloudTracing() {
+function setUpGoogleCloudTrace() {
   require('@google-cloud/trace-agent').start();
 }
 
@@ -22,5 +22,5 @@ if (process.env.SHOULD_PROFILE) {
 }
 
 if (process.env.SHOULD_TRACE) {
-  setUpGoogleCloudTracing();
+  setUpGoogleCloudTrace();
 }

@@ -2,6 +2,13 @@
   font-size: 18px;
 }
 
+@media only screen and (max-width: 730px) {
+  .notion-page {
+    padding-left: 4vw;
+    padding-right: 4vw;
+  }
+}
+
 .notion-page-icon-wrapper {
   left: inherit;
   display: block;
