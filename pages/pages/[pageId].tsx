@@ -167,11 +167,13 @@ export default function NotionPage({ recordMap }) {
         }}
       />
 
-      <UtterancesComments
-        repo="taehoio/notionproxy-utterances"
-        issueTerm="pathname"
-        theme="github-dark"
-      />
+      {pageId !== publicRuntimeConfig.rootNotionPageId && (
+        <UtterancesComments
+          repo="taehoio/notionproxy-utterances"
+          issueTerm="pathname"
+          theme="github-dark"
+        />
+      )}
     </>
   );
 }
