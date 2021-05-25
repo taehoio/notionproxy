@@ -65,7 +65,10 @@ interface PageInfo {
   titleWithIcon: string;
 }
 
-function isEmoji(s: string): boolean {
+function isEmoji(s: undefined | string): boolean {
+  if (!s) {
+    return false;
+  }
   // https://css-tricks.com/weekly-platform-news-emoji-string-length-issues-with-rounded-buttons-bundled-exchanges/
   return s.length > 0 && s.length <= 7;
 }
