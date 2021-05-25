@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import getConfig from 'next/config';
 import { useRouter } from 'next/router';
 
@@ -150,7 +151,16 @@ export default function NotionPage({ recordMap }) {
         }}
       />
 
-      {pageId !== rootNotionPageId ? <UtterancesComments /> : null}
+      {pageId !== rootNotionPageId ? (
+        <script
+          src="https://utteranc.es/client.js"
+          data-repo="taehoio/notionproxy-utterances"
+          data-issue-term="pathname"
+          data-theme="github-dark"
+          crossOrigin="anonymous"
+          async
+        ></script>
+      ) : null}
     </>
   );
 }
