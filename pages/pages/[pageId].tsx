@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
 import getConfig from 'next/config';
 import { useRouter } from 'next/router';
 
@@ -13,7 +12,6 @@ import {
   CollectionRow,
   NotionRenderer,
 } from 'react-notion-x';
-import { UtterancesComments } from '../../components/Utterances';
 
 const notion = new NotionAPI();
 
@@ -29,11 +27,6 @@ export const getStaticProps = async (context) => {
   };
 };
 
-// 'Hello, I'm Taeho.' notion page id.
-const rootNotionPageId = '6ca2dd5e-2214-4873-8ffa-d634d8ebbb53';
-// 'taehoio' notion space id.
-const rootNotionSpaceId = 'f2b37586-33c0-4236-bab4-a87c12f0d6e9';
-
 export async function getStaticPaths() {
   if (process.env.NODE_ENV !== 'production') {
     return {
@@ -41,6 +34,11 @@ export async function getStaticPaths() {
       fallback: true,
     };
   }
+
+  // 'Hello, I'm Taeho.' notion page id.
+  const rootNotionPageId = '6ca2dd5e-2214-4873-8ffa-d634d8ebbb53';
+  // 'taehoio' notion space id.
+  const rootNotionSpaceId = 'f2b37586-33c0-4236-bab4-a87c12f0d6e9';
 
   // This crawls all public pages starting from the given root page in order
   // for next.js to pre-generate all pages via static site generation (SSG).
