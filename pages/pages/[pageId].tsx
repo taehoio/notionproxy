@@ -12,6 +12,7 @@ import {
   CollectionRow,
   NotionRenderer,
 } from 'react-notion-x';
+import UtterancesComments from '../../components/UtterancesComments';
 
 const notion = new NotionAPI();
 
@@ -166,15 +167,11 @@ export default function NotionPage({ recordMap }) {
         }}
       />
 
-      <script
-        src="https://utteranc.es/client.js"
-        data-repo="taehoio/notionproxy-utterances"
-        data-issue-term="pathname"
-        data-label="notionproxy-comment"
-        data-theme="github-dark"
-        date-crossorigin="anonymous"
-        async
-      ></script>
+      <UtterancesComments
+        repo="taehoio/notionproxy-utterances"
+        issueTerm="pathname"
+        theme="github-dark"
+      />
     </>
   );
 }
