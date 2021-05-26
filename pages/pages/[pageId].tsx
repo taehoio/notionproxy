@@ -6,12 +6,8 @@ import { useRouter } from 'next/router';
 import { getPageTitle, getAllPagesInSpace, getBlockTitle } from 'notion-utils';
 import { ExtendedRecordMap } from 'notion-types';
 import { NotionAPI } from 'notion-client';
-import {
-  Code,
-  Collection,
-  CollectionRow,
-  NotionRenderer,
-} from 'react-notion-x';
+import { Collection, CollectionRow, NotionRenderer } from 'react-notion-x';
+import { Code } from '../../components/Code';
 import UtterancesComments from '../../components/UtterancesComments';
 
 const notion = new NotionAPI();

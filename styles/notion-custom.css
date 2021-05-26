@@ -26,3 +26,7 @@
 .notion-full-page {
   padding-bottom: calc(max(5vh, 50px));
 }
+
+.notion .notion-code {
+  font-size: 75%;
+}
