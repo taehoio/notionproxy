@@ -27,7 +27,7 @@ export const Code: React.FC<{ code: string; language: string }> = ({
   const prismLanguage = languages[languageL] || languages.javascript;
 
   return (
-    <pre className="notion-code line-numbers">
+    <pre className="notion-code">
       <code
         className={`language-${languageL}`}
         dangerouslySetInnerHTML={{
