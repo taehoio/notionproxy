@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "node --require ./server-preload.js ./node_modules/.bin/next dev",
     "build": "next build",
-    "start": "node --require ./server-preload.js ./node_modules/.bin/next start",
+    "start": "node --require ./server-preload.js ./node_modules/.bin/next-boost",
     "cy": "cypress open",
     "cy:run": "cypress run",
     "cy:ci": "start-server-and-test start 3000 cy:run",
@@ -17,6 +17,7 @@
     "@google-cloud/profiler": "^4.1.2",
     "@google-cloud/trace-agent": "^5.1.3",
     "next": "^10.2.0",
+    "next-boost": "^0.10.0",
     "notion-client": "^4.6.2",
     "notion-utils": "^4.6.2",
     "react": "^17.0.1",
