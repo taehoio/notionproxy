@@ -27,6 +27,37 @@
   padding-bottom: calc(max(5vh, 50px));
 }
 
+@media only screen and (max-width: 730px) {
+  .notion-page-link {
+    display: flex;
+    flex-direction: column;
+    height: inherit;
+  }
+
+  .notion-list-item {
+    align-items: inherit;
+  }
+
+  .notion-list-item-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .notion-list-item-property {
+    margin-left: 5px;
+    align-self: flex-end;
+  }
+
+  .notion-property {
+    margin-top: 5px;
+  }
+
+  .notion-property-multi_select-item {
+    margin-top: 5px;
+  }
+}
+
 .notion .notion-code {
   font-size: 75%;
 }
