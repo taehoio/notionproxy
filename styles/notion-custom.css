@@ -30,3 +30,18 @@
 .notion .notion-code {
   font-size: 75%;
 }
+
+code[class*='language-'],
+pre[class*='language-'] {
+  width: 100%;
+  padding: 10px 10px 10px 10px;
+  margin: 4px 0;
+  border-radius: 3px;
+  tab-size: 2;
+  display: block;
+  box-sizing: border-box;
+  overflow: auto;
+  background: var(--bg-color-1);
+  font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, Courier,
+    monospace;
+}

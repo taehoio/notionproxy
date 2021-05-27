@@ -25,13 +25,14 @@ export const Code: React.FC<{ code: string; language: string }> = ({
 }) => {
   const languageL = language.toLowerCase();
   const prismLanguage = languages[languageL] || languages.javascript;
+  const html = highlight(code, prismLanguage, language);
 
   return (
-    <pre className="notion-code">
+    <pre className={`notion-code language-${languageL}`}>
       <code
         className={`language-${languageL}`}
         dangerouslySetInnerHTML={{
-          __html: highlight(code, prismLanguage, language),
+          __html: html,
         }}
       />
     </pre>
