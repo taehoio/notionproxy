@@ -6,6 +6,7 @@ context('notionproxy', () => {
   });
 
   it('test', () => {
+    cy.title().should('contain', '| TAEHO.IO');
     cy.get('.notion-title').should('contain', "Hello, I'm Taeho.");
   });
 });
