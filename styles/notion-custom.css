@@ -79,3 +79,7 @@ pre[class*='language-'] {
   font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, Courier,
     monospace;
 }
+
+.notion-collection {
+  width: 100%;
+}
