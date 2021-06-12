@@ -12,10 +12,6 @@
 
 ## Screenshots
 
-### Desktop
-
-![image](./screenshots/screenshot_desktop.png)
-
-### Mobile
-
-![image](./screenshots/screenshot_mobile.png)
+| Desktop                                        | Mobile                                        |
+| ---------------------------------------------- | --------------------------------------------- |
+| ![image](./screenshots/screenshot_desktop.png) | ![image](./screenshots/screenshot_mobile.png) |
