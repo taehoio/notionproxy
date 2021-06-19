@@ -98,6 +98,10 @@ function getPageInfo(recordMap: ExtendedRecordMap): PageInfo {
         description += ' ';
       }
     }
+
+    if (description?.length > 100) {
+      break;
+    }
   }
 
   return {
@@ -124,28 +128,23 @@ export default function NotionPage({ recordMap }) {
   const router = useRouter();
   const { pageId } = router.query;
 
-  const { publicRuntimeConfig } = getConfig();
-  const hasThumbnail: boolean =
-    publicRuntimeConfig?.pageIdsThatHaveThumnail?.includes(pageId);
-  const imageUrl = `https://taeho.io/images/thumbnails/pages/${pageId}.png`;
-
   const pageInfo = getPageInfo(recordMap);
+  const imageUrl = `/api/pages/${pageId}/image`;
 
   const childrenOfHead = (
     <>
       <title>{`${pageInfo.title} | TAEHO.IO`}</title>
       <meta property="og:title" content={pageInfo.titleWithIcon} />
       <meta property="og:description" content={pageInfo.description} />
-      {hasThumbnail && <meta property="og:image" content={imageUrl} />}
-      <meta
-        name="twitter:card"
-        content={hasThumbnail ? 'summary_large_image' : 'summary'}
-      />
+      <meta property="og:image" content={imageUrl} />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={pageInfo.titleWithIcon} />
       <meta name="twitter:description" content={pageInfo.description} />
-      {hasThumbnail && <meta property="twitter:image" content={imageUrl} />}
+      <meta property="twitter:image" content={imageUrl} />
     </>
   );
+
+  const { publicRuntimeConfig } = getConfig();
 
   return (
     <>
