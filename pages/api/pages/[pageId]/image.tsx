@@ -24,7 +24,9 @@ function getPageCoverImageUrl(
     return null;
   }
 
-  return `https://www.notion.so/image/${encodeURIComponent(pageCover)}?table=block&id=${pageId}`;
+  return `https://www.notion.so/image/${encodeURIComponent(
+    pageCover,
+  )}?table=block&id=${pageId}`;
 }
 
 export default async function handler(req, resp) {
