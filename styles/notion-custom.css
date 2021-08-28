@@ -83,3 +83,7 @@ pre[class*='language-'] {
 .notion-collection {
   width: 100%;
 }
+
+.notion-quote {
+  font-size: 1.1em;
+}
