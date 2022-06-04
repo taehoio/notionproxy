@@ -14,7 +14,7 @@
     "format": "eslint '**/*.{ts,tsx,js,jsx}' --fix"
   },
   "dependencies": {
-    "@google-cloud/profiler": "^4.1.7",
+    "@google-cloud/profiler": "4.2.0",
     "@google-cloud/trace-agent": "^5.1.6",
     "next": "^12.1.0",
     "node-fetch": "^2.6.7",
@@ -22,6 +22,7 @@
     "notion-client": "^4.15.0",
     "notion-types": "^4.15.0",
     "notion-utils": "^4.15.0",
+    "protobufjs": "6.11.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-notion-x": "^4.15.0"

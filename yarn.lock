@@ -136,10 +136,10 @@
     arrify "^2.0.0"
     extend "^3.0.2"
 
-"@google-cloud/profiler@^4.1.7":
-  version "4.1.7"
-  resolved "https://registry.yarnpkg.com/@google-cloud/profiler/-/profiler-4.1.7.tgz#152364f8284ec35bd4d163499ff0db07055103ea"
-  integrity sha512-ycN2gdl7DlXVbZZYv4F5WcDLFLtpSNLzmchfNzQPyMMSAX2zg5DjhxJCJCu6CqLdJFTKSUylqEO5A3CU1T/vCQ==
+"@google-cloud/profiler@4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@google-cloud/profiler/-/profiler-4.2.0.tgz#7f25a58d625426c0d391bc21a7b3164efe7a3d4c"
+  integrity sha512-DfDa5t4ou5OiS01zhY5zym++Li3pCaGFefB1WsGCAHeySqMHoMNJVLca/VJGVXiehR3k4CRbOunlr9syNhP1kg==
   dependencies:
     "@google-cloud/common" "^3.0.0"
     "@google-cloud/logging-min" "^9.6.3"
@@ -3092,6 +3092,25 @@ protobufjs@6.11.2, protobufjs@^6.10.0, protobufjs@^6.11.2, protobufjs@~6.11.0:
   version "6.11.2"
   resolved "https://registry.npmjs.org/protobufjs/-/protobufjs-6.11.2.tgz"
   integrity sha512-4BQJoPooKJl2G9j3XftkIXjoC9C0Av2NOrWmbLWT1vH32GcSUHjM0Arra6UfTsVyfMAuFzaLucXn1sadxJydAw==
+  dependencies:
+    "@protobufjs/aspromise" "^1.1.2"
+    "@protobufjs/base64" "^1.1.2"
+    "@protobufjs/codegen" "^2.0.4"
+    "@protobufjs/eventemitter" "^1.1.0"
+    "@protobufjs/fetch" "^1.1.0"
+    "@protobufjs/float" "^1.0.2"
+    "@protobufjs/inquire" "^1.1.0"
+    "@protobufjs/path" "^1.1.2"
+    "@protobufjs/pool" "^1.1.0"
+    "@protobufjs/utf8" "^1.1.0"
+    "@types/long" "^4.0.1"
+    "@types/node" ">=13.7.0"
+    long "^4.0.0"
+
+protobufjs@6.11.3:
+  version "6.11.3"
+  resolved "https://registry.yarnpkg.com/protobufjs/-/protobufjs-6.11.3.tgz#637a527205a35caa4f3e2a9a4a13ddffe0e7af74"
+  integrity sha512-xL96WDdCZYdU7Slin569tFX712BxsxslWwAfAhCYjQKGTq7dAU91Lomy6nLLhh/dyGhk/YH4TwTSRxTzhuHyZg==
   dependencies:
     "@protobufjs/aspromise" "^1.1.2"
     "@protobufjs/base64" "^1.1.2"
