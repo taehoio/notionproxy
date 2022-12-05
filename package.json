@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "node --require ./server-preload.js ./node_modules/.bin/next dev",
     "build": "next build",
-    "start": "node --require ./server-preload.js ./node_modules/.bin/next start --keepAliveTimeout 70000",
+    "start": "node --require ./server-preload.js ./node_modules/.bin/next start",
     "cy": "cypress open",
     "cy:run": "cypress run",
     "cy:ci": "start-server-and-test start 3000 cy:run",
@@ -16,6 +16,7 @@
   "dependencies": {
     "@google-cloud/profiler": "4.2.0",
     "@google-cloud/trace-agent": "^5.1.6",
+    "agentkeepalive": "^4.2.1",
     "eslint-config-next": "^12.2.0",
     "next": "^12.2.0",
     "node-fetch": "^2.6.7",
