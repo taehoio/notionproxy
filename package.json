@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "node --require ./server-preload.js ./node_modules/.bin/next dev",
     "build": "next build",
-    "start": "node --require ./server-preload.js ./node_modules/.bin/next start --keepAliveTimeout 70000",
+    "start": "node --require ./server-preload.js ./node_modules/.bin/next start",
     "cy": "cypress open",
     "cy:run": "cypress run",
     "cy:ci": "start-server-and-test start 3000 cy:run",
