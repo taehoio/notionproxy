@@ -140,10 +140,6 @@ function getPageInfo(recordMap: ExtendedRecordMap): PageInfo {
     }
   }
 
-  console.log(description);
-  console.log(isFirstPage);
-  console.log(description.length);
-
   return {
     title,
     description,
