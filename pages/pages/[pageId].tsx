@@ -2,12 +2,45 @@ import React from 'react';
 import Head from 'next/head';
 import getConfig from 'next/config';
 import { useRouter } from 'next/router';
-
 import { getPageTitle, getAllPagesInSpace, getBlockTitle } from 'notion-utils';
 import { ExtendedRecordMap } from 'notion-types';
 import { NotionAPI } from 'notion-client';
-import { Collection, CollectionRow, NotionRenderer } from 'react-notion-x';
-import { Code } from '../../components/Code';
+import { NotionRenderer } from 'react-notion-x';
+import Image from 'next/image';
+import Link from 'next/link';
+
+import dynamic from 'next/dynamic';
+const Code = dynamic(() =>
+  import('react-notion-x/build/third-party/code').then(async (m) => {
+    await Promise.all([
+      import('prismjs/components/prism-bash'),
+      import('prismjs/components/prism-css'),
+      import('prismjs/components/prism-docker'),
+      import('prismjs/components/prism-go'),
+      import('prismjs/components/prism-http'),
+      import('prismjs/components/prism-java'),
+      import('prismjs/components/prism-javascript'),
+      import('prismjs/components/prism-json'),
+      import('prismjs/components/prism-jsx'),
+      import('prismjs/components/prism-makefile'),
+      import('prismjs/components/prism-markdown'),
+      import('prismjs/components/prism-markup'),
+      import('prismjs/components/prism-protobuf'),
+      import('prismjs/components/prism-python'),
+      import('prismjs/components/prism-sql'),
+      import('prismjs/components/prism-tsx'),
+      import('prismjs/components/prism-typescript'),
+      import('prismjs/components/prism-yaml'),
+    ]);
+    return m.Code as any;
+  }),
+);
+const Collection = dynamic(() =>
+  import('react-notion-x/build/third-party/collection').then(
+    (m) => m.Collection,
+  ),
+);
+
 import UtterancesComments from '../../components/UtterancesComments';
 
 const notion = new NotionAPI();
@@ -156,10 +189,13 @@ export default function NotionPage({ recordMap }) {
         fullPage={true}
         darkMode={true}
         mapPageUrl={(path: string) => '/pages/' + path}
+        isImageZoomable={true}
+        previewImages={true}
         components={{
-          collection: Collection,
-          collectionRow: CollectionRow,
-          code: Code,
+          nextImage: Image,
+          nextLink: Link,
+          Collection,
+          Code,
         }}
       />
 
