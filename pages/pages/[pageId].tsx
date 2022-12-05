@@ -105,11 +105,18 @@ function isEmoji(s: undefined | string): boolean {
 
 function getPageInfo(recordMap: ExtendedRecordMap): PageInfo {
   const title = getPageTitle(recordMap);
+
+  const descriptionLengthThreshold = 190;
   let description = '';
   let pageIcon = '';
 
   let isFirstPage = true;
+
   for (const k in recordMap.block) {
+    if (description.length > descriptionLengthThreshold) {
+      break;
+    }
+
     const v = recordMap.block[k];
     const block = v.value;
 
@@ -132,6 +139,10 @@ function getPageInfo(recordMap: ExtendedRecordMap): PageInfo {
       }
     }
   }
+
+  console.log(description);
+  console.log(isFirstPage);
+  console.log(description.length);
 
   return {
     title,
