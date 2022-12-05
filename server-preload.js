@@ -24,3 +24,11 @@ if (process.env.SHOULD_PROFILE) {
 if (process.env.SHOULD_TRACE) {
   setUpGoogleCloudTrace();
 }
+
+// Avoid 'Error: socket hang up' on CloudRun
+// https://github.com/request/request/issues/2047#issuecomment-532753784
+const https = require('https');
+const HttpsAgent = require('agentkeepalive').HttpsAgent;
+https.globalAgent = new HttpsAgent({
+  freeSocketTimeout: 4000,
+});
