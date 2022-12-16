@@ -197,7 +197,6 @@ export default function NotionPage({ recordMap }) {
         darkMode={true}
         mapPageUrl={(path: string) => '/pages/' + path}
         isImageZoomable={true}
-        previewImages={true}
         components={{
           nextImage: Image,
           nextLink: Link,
