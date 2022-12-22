@@ -7,7 +7,6 @@ import { ExtendedRecordMap } from 'notion-types';
 import { NotionAPI } from 'notion-client';
 import { NotionRenderer } from 'react-notion-x';
 import Image from 'next/image';
-import Link from 'next/link';
 
 import dynamic from 'next/dynamic';
 const Code = dynamic(() =>
@@ -199,7 +198,6 @@ export default function NotionPage({ recordMap }) {
         isImageZoomable={true}
         components={{
           nextImage: Image,
-          nextLink: Link,
           Collection,
           Code,
         }}
