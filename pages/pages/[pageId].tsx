@@ -6,7 +6,6 @@ import { getPageTitle, getAllPagesInSpace, getBlockTitle } from 'notion-utils';
 import { ExtendedRecordMap } from 'notion-types';
 import { NotionAPI } from 'notion-client';
 import { NotionRenderer } from 'react-notion-x';
-import Image from 'next/image';
 
 import dynamic from 'next/dynamic';
 const Code = dynamic(() =>
@@ -197,7 +196,6 @@ export default function NotionPage({ recordMap }) {
         mapPageUrl={(path: string) => '/pages/' + path}
         isImageZoomable={true}
         components={{
-          nextImage: Image,
           Collection,
           Code,
         }}
