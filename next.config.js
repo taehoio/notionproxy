@@ -26,6 +26,9 @@ const nextConfig = {
     gaTraceId: 'G-HDWXJVK15N',
     pageIdsThatHaveThumnail,
   },
+  experimental: {
+    isrMemoryCacheSize: 0,
+  },
 };
 
 module.exports = nextConfig;
