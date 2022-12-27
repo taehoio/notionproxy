@@ -43,7 +43,7 @@ import UtterancesComments from '../../components/UtterancesComments';
 
 const notion = new NotionAPI();
 
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
   const pageId = context.params.pageId as string;
   const recordMap = await notion.getPage(pageId);
 
@@ -51,40 +51,8 @@ export const getStaticProps = async (context) => {
     props: {
       recordMap,
     },
-    revalidate: 10,
   };
 };
-
-export async function getStaticPaths() {
-  if (process.env.NODE_ENV !== 'production') {
-    return {
-      paths: [],
-      fallback: true,
-    };
-  }
-
-  const { publicRuntimeConfig } = getConfig();
-
-  // This crawls all public pages starting from the given root page in order
-  // for next.js to pre-generate all pages via static site generation (SSG).
-  // This is a useful optimization but not necessary; you could just as easily
-  // set paths to an empty array to not pre-generate any pages at build time.
-  const pages = await getAllPagesInSpace(
-    publicRuntimeConfig.rootNotionPageId,
-    publicRuntimeConfig.rootNotionSpaceId,
-    notion.getPage.bind(notion),
-    {
-      traverseCollections: false,
-    },
-  );
-
-  const paths = Object.keys(pages).map((pageId) => `/pages/${pageId}`);
-
-  return {
-    paths,
-    fallback: true,
-  };
-}
 
 interface PageInfo {
   title: string;
