@@ -2,10 +2,12 @@ import React from 'react';
 import Head from 'next/head';
 import getConfig from 'next/config';
 import { useRouter } from 'next/router';
-import { getPageTitle, getAllPagesInSpace, getBlockTitle } from 'notion-utils';
+import { getPageTitle, getBlockTitle } from 'notion-utils';
 import { ExtendedRecordMap } from 'notion-types';
 import { NotionAPI } from 'notion-client';
 import { NotionRenderer } from 'react-notion-x';
+import Link from 'next/link';
+import Image from 'next/image';
 
 import dynamic from 'next/dynamic';
 const Code = dynamic(() =>
@@ -166,6 +168,8 @@ export default function NotionPage({ recordMap }) {
         components={{
           Collection,
           Code,
+          nextLink: Link,
+          nextImage: Image,
         }}
       />
 
