@@ -46,14 +46,25 @@ import UtterancesComments from '../../components/UtterancesComments';
 const notion = new NotionAPI();
 
 export const getServerSideProps = async (context) => {
-  const pageId = context.params.pageId as string;
-  const recordMap = await notion.getPage(pageId);
-
-  return {
-    props: {
-      recordMap,
-    },
-  };
+  try {
+    const pageId = context.params.pageId as string;
+    const recordMap = await notion.getPage(pageId);
+    return {
+      props: {
+        recordMap,
+      },
+    };
+  } catch (err) {
+    if (
+      err.message?.startsWith('Notion page not found') ||
+      err.message?.startsWith('invalid notion pageId')
+    ) {
+      return {
+        notFound: true,
+      };
+    }
+    throw err;
+  }
 };
 
 interface PageInfo {
