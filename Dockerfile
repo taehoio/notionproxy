@@ -35,6 +35,7 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/next.config.js ./next.config.js
 COPY --from=builder /app/server-preload.js ./server-preload.js
+COPY --from=builder /app/lib ./lib
 
 USER nextjs
 
