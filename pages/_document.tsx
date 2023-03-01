@@ -1,8 +1,7 @@
 import * as React from 'react';
-import getConfig from 'next/config';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
-const gaTraceId = getConfig().publicRuntimeConfig.gaTraceId;
+const gaTraceId = 'G-HDWXJVK15N';
 
 export default class MyDocument extends Document {
   addGoogleAnalyticsScript() {
