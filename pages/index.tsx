@@ -4,51 +4,25 @@ import getConfig from 'next/config';
 import { useRouter } from 'next/router';
 import { getPageTitle, getBlockTitle } from 'notion-utils';
 import { ExtendedRecordMap } from 'notion-types';
-import { NotionAPI } from '../../lib/notion-client';
+import { NotionAPI } from '../lib/notion-client';
 import { NotionRenderer } from 'react-notion-x';
 import Link from 'next/link';
 import Image from 'next/image';
 
+const rootNotionPageId = '6ca2dd5e-2214-4873-8ffa-d634d8ebbb53';
+
 import dynamic from 'next/dynamic';
-const Code = dynamic(() =>
-  import('react-notion-x/build/third-party/code').then(async (m) => {
-    await Promise.all([
-      import('prismjs/components/prism-bash'),
-      import('prismjs/components/prism-css'),
-      import('prismjs/components/prism-docker'),
-      import('prismjs/components/prism-go'),
-      import('prismjs/components/prism-http'),
-      import('prismjs/components/prism-java'),
-      import('prismjs/components/prism-javascript'),
-      import('prismjs/components/prism-json'),
-      import('prismjs/components/prism-jsx'),
-      import('prismjs/components/prism-makefile'),
-      import('prismjs/components/prism-markdown'),
-      import('prismjs/components/prism-markup'),
-      import('prismjs/components/prism-protobuf'),
-      import('prismjs/components/prism-python'),
-      import('prismjs/components/prism-sql'),
-      import('prismjs/components/prism-tsx'),
-      import('prismjs/components/prism-typescript'),
-      import('prismjs/components/prism-yaml'),
-    ]);
-    return m.Code as any;
-  }),
-);
 const Collection = dynamic(() =>
   import('react-notion-x/build/third-party/collection').then(
     (m) => m.Collection,
   ),
 );
 
-import UtterancesComments from '../../components/UtterancesComments';
-
 const notion = new NotionAPI();
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = async () => {
   try {
-    const pageId = context.params.pageId as string;
-    const recordMap = await notion.getPage(pageId);
+    const recordMap = await notion.getPage(rootNotionPageId);
     return {
       props: {
         recordMap,
@@ -178,16 +152,9 @@ export default function NotionPage({ recordMap }) {
         isImageZoomable={true}
         components={{
           Collection,
-          Code,
           nextLink: Link,
           nextImage: Image,
         }}
-      />
-
-      <UtterancesComments
-        repo="taehoio/notionproxy-utterances"
-        issueTerm="pathname"
-        theme="github-dark"
       />
     </>
   );
