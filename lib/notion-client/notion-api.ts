@@ -617,6 +617,7 @@ export class NotionAPI {
       method: 'post',
       body: JSON.stringify(body),
       headers,
+      credentials: undefined,
     }).then((res) => {
       //console.log(endpoint, res);
       return res.json();
