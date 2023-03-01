@@ -243,7 +243,8 @@ export class NotionAPI {
         // console.log(block, source)
 
         if (source) {
-          if (!source.includes('secure.notion-static.com')) {
+          const hostname = new URL(source).hostname;
+          if (hostname !== 'secure.notion-static.com') {
             return [];
           }
 
