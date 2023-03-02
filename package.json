@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "engines": {
-    "node": ">14.8"
+    "node": ">=14.8"
   },
   "scripts": {
     "dev": "node --require ./server-preload.js ./node_modules/.bin/next dev",
@@ -48,6 +48,6 @@
     "prettier": "^2.2.1",
     "start-server-and-test": "^1.12.2",
     "typescript": "^4.7.4",
-    "vercel": "^28.16.10"
+    "vercel": "^28.16.11"
   }
 }
