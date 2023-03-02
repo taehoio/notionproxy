@@ -30,6 +30,10 @@
   padding-bottom: calc(max(5vh, 50px));
 }
 
+.notion-list-item-title {
+  max-width: 520px;
+}
+
 @media only screen and (max-width: 730px) {
   .notion-page-link {
     display: flex;
