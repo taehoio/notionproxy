@@ -7451,11 +7451,6 @@ react-fast-compare@^3.2.0:
   resolved "https://registry.npmjs.org/react-fast-compare/-/react-fast-compare-3.2.0.tgz"
   integrity sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==
 
-react-ga@^3.3.1:
-  version "3.3.1"
-  resolved "https://registry.npmjs.org/react-ga/-/react-ga-3.3.1.tgz"
-  integrity sha512-4Vc0W5EvXAXUN/wWyxvsAKDLLgtJ3oLmhYYssx+YzphJpejtOst6cbIHCIyF50Fdxuf5DDKqRYny24yJ2y7GFQ==
-
 react-hotkeys-hook@^3.0.3:
   version "3.3.1"
   resolved "https://registry.npmjs.org/react-hotkeys-hook/-/react-hotkeys-hook-3.3.1.tgz"
