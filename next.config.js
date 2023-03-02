@@ -17,6 +17,7 @@ const nextConfig = {
   },
   experimental: {
     isrMemoryCacheSize: 0,
+    runtime: 'experimental-edge',
   },
 };
 

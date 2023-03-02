@@ -192,7 +192,3 @@ export default function NotionPage({ recordMap }) {
     </>
   );
 }
-
-export const config = {
-  runtime: 'experimental-edge',
-};
