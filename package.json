@@ -48,6 +48,6 @@
     "prettier": "^2.2.1",
     "start-server-and-test": "^2.0.3",
     "typescript": "^4.7.4",
-    "vercel": "^28.16.11"
+    "vercel": "^50.11.0"
   }
 }
