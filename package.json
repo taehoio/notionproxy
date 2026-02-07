@@ -2,12 +2,14 @@
   "name": "notionproxy",
   "version": "0.0.1",
   "private": true,
+  "packageManager": "yarn@1.22.22",
   "engines": {
-    "node": ">=14.8"
+    "node": ">=18"
   },
   "scripts": {
     "dev": "node --require ./server-preload.js ./node_modules/.bin/next dev",
     "build": "next build",
+    "build:cloudflare": "npx @cloudflare/next-on-pages@1",
     "start": "node --require ./server-preload.js ./node_modules/.bin/next start",
     "analyze": "cross-env ANALYZE=true next build",
     "lint": "eslint '**/*.{ts,tsx,js,jsx}'",
