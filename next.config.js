@@ -15,10 +15,6 @@ const nextConfig = {
   publicRuntimeConfig: {
     pageIdsThatHaveThumnail,
   },
-  experimental: {
-    isrMemoryCacheSize: 0,
-    runtime: 'experimental-edge',
-  },
 };
 
 module.exports = nextConfig;
