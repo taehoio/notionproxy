@@ -25,8 +25,7 @@ const notion = new NotionAPI();
 
 export const getServerSideProps = async () => {
   try {
-    const recordMap = await notion.getPage(rootNotionPageId);
-    replaceBitlyLinks(recordMap);
+    const recordMap = replaceBitlyLinks(await notion.getPage(rootNotionPageId));
     return {
       props: {
         recordMap,

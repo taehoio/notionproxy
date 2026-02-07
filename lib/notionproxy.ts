@@ -72,48 +72,25 @@ export function getPageInfo(recordMap: ExtendedRecordMap): PageInfo {
   };
 }
 
-const bitlyToOriginalUrl: Record<string, string> = {
-  'https://bit.ly/3w8X8V2': 'https://github.com/xissy',
-  'https://bit.ly/2S3VoxK': 'https://www.linkedin.com/in/xissy/',
-  'https://bit.ly/3bybKp3':
-    'https://www.facebook.com/people/Taeho-Kim/100009318936193/',
-  'https://bit.ly/3fjgSj2': 'https://github.com/taehoio/notionproxy',
-};
-
-export function replaceBitlyLinks(recordMap: ExtendedRecordMap): void {
-  for (const blockId in recordMap.block) {
-    const block = recordMap.block[blockId]?.value;
-    if (!block) continue;
-
-    if (block.properties) {
-      for (const propKey in block.properties) {
-        const prop = block.properties[propKey];
-        if (!Array.isArray(prop)) continue;
-        for (const dec of prop) {
-          if (!Array.isArray(dec) || dec.length < 2) continue;
-          for (const sub of dec[1]) {
-            if (
-              Array.isArray(sub) &&
-              sub[0] === 'a' &&
-              sub[1] in bitlyToOriginalUrl
-            ) {
-              sub[1] = bitlyToOriginalUrl[sub[1]];
-            }
-          }
-        }
-      }
-    }
-
-    const format = block.format as Record<string, string> | undefined;
-    if (format) {
-      if (format.bookmark_link in bitlyToOriginalUrl) {
-        format.bookmark_link = bitlyToOriginalUrl[format.bookmark_link];
-      }
-      if (format.display_source in bitlyToOriginalUrl) {
-        format.display_source = bitlyToOriginalUrl[format.display_source];
-      }
-    }
-  }
+export function replaceBitlyLinks(
+  recordMap: ExtendedRecordMap,
+): ExtendedRecordMap {
+  return JSON.parse(
+    JSON.stringify(recordMap)
+      .replaceAll('https://bit.ly/3w8X8V2', 'https://github.com/xissy')
+      .replaceAll(
+        'https://bit.ly/2S3VoxK',
+        'https://www.linkedin.com/in/xissy/',
+      )
+      .replaceAll(
+        'https://bit.ly/3bybKp3',
+        'https://www.facebook.com/people/Taeho-Kim/100009318936193/',
+      )
+      .replaceAll(
+        'https://bit.ly/3fjgSj2',
+        'https://github.com/taehoio/notionproxy',
+      ),
+  );
 }
 
 export function addGoogleAnalyticsScript(gaTraceId: string) {
