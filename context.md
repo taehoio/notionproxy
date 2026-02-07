@@ -1,6 +1,6 @@
 # Technical Context
 
-## Notion API Format Change (2025-02)
+## Notion API Format Change (2026-02)
 
 The `queryCollection` endpoint changed response format without notice.
 
@@ -13,7 +13,7 @@ Detection logic: if an entry has `spaceId` at root and `value.value` exists, it'
 
 ## Cloudflare Pages Build Pipeline
 
-Build issues resolved (2025-02):
+Build issues resolved (2026-02):
 
 1. **pprof native module failure** - Removed unused `@google-cloud/profiler`, `@google-cloud/trace-agent`, `agentkeepalive`
 2. **async_hooks resolution** - Upgraded from `@cloudflare/next-on-pages@pre-v1` (0.10.2, deprecated) to v1 (1.13.16)
