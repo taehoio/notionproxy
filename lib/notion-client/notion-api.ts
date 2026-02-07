@@ -13,28 +13,6 @@ import pMap from 'p-map';
 import * as types from './types';
 
 /**
- * Normalizes a record map entry from the Notion API.
- * The queryCollection endpoint now returns entries wrapped in
- * { spaceId, value: { value, role } } instead of { value, role }.
- * This function unwraps the new format to the expected { value, role }.
- */
-function normalizeRecordMap<T extends Record<string, any>>(
-  recordMap: T | undefined,
-): T {
-  if (!recordMap) return {} as T;
-  const result: any = {};
-  for (const [id, entry] of Object.entries(recordMap)) {
-    if (entry?.spaceId && entry?.value?.value !== undefined) {
-      // New format: { spaceId, value: { value, role } } -> unwrap to { value, role }
-      result[id] = entry.value;
-    } else {
-      result[id] = entry;
-    }
-  }
-  return result;
-}
-
-/**
  * Main Notion API client.
  */
 export class NotionAPI {
@@ -180,22 +158,22 @@ export class NotionAPI {
 
             recordMap.block = {
               ...recordMap.block,
-              ...normalizeRecordMap(collectionData.recordMap.block),
+              ...collectionData.recordMap.block,
             };
 
             recordMap.collection = {
               ...recordMap.collection,
-              ...normalizeRecordMap(collectionData.recordMap.collection),
+              ...collectionData.recordMap.collection,
             };
 
             recordMap.collection_view = {
               ...recordMap.collection_view,
-              ...normalizeRecordMap(collectionData.recordMap.collection_view),
+              ...collectionData.recordMap.collection_view,
             };
 
             recordMap.notion_user = {
               ...recordMap.notion_user,
-              ...normalizeRecordMap(collectionData.recordMap.notion_user),
+              ...collectionData.recordMap.notion_user,
             };
 
             recordMap.collection_query![collectionId] = {
