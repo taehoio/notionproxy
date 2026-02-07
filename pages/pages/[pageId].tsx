@@ -10,7 +10,7 @@ import {
   addGoogleAnalyticsScript,
   gaTraceId,
   getPageInfo,
-  resolveBitlyLinks,
+  replaceBitlyLinks,
 } from '../../lib/notionproxy';
 import UtterancesComments from '../../components/UtterancesComments';
 
@@ -54,7 +54,7 @@ export const getServerSideProps = async (context) => {
   try {
     const pageId = context.params.pageId as string;
     const recordMap = await notion.getPage(pageId);
-    await resolveBitlyLinks(recordMap);
+    replaceBitlyLinks(recordMap);
     return {
       props: {
         recordMap,
