@@ -31,7 +31,7 @@
     "react-notion-x": "^6.16.0"
   },
   "devDependencies": {
-    "@babel/runtime": "^7.14.0",
+    "@babel/runtime": "^7.26.10",
     "@next/bundle-analyzer": "^10.2.3",
     "@playwright/test": "^1.31.1",
     "@types/node": "^15.3.0",
