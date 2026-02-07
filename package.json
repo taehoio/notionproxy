@@ -7,10 +7,10 @@
     "node": ">=18"
   },
   "scripts": {
-    "dev": "node --require ./server-preload.js ./node_modules/.bin/next dev",
+    "dev": "next dev",
     "build": "next build",
     "build:cloudflare": "npx @cloudflare/next-on-pages@1",
-    "start": "node --require ./server-preload.js ./node_modules/.bin/next start",
+    "start": "next start",
     "analyze": "cross-env ANALYZE=true next build",
     "lint": "eslint '**/*.{ts,tsx,js,jsx}'",
     "format": "eslint '**/*.{ts,tsx,js,jsx}' --fix"
