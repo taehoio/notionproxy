@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-import getConfig from 'next/config';
 import { useRouter } from 'next/router';
 import { NotionAPI } from '../lib/notion-client';
 import { NotionRenderer } from 'react-notion-x';
@@ -52,9 +51,12 @@ export default function NotionPage({ recordMap }) {
   const router = useRouter();
   const { pageId } = router.query;
 
-  const { publicRuntimeConfig } = getConfig();
-  const hasThumbnail: boolean =
-    publicRuntimeConfig?.pageIdsThatHaveThumnail?.includes(pageId);
+  const pageIdsThatHaveThumbnail: string[] = JSON.parse(
+    process.env.PAGE_IDS_THAT_HAVE_THUMBNAIL || '[]',
+  );
+  const hasThumbnail: boolean = pageIdsThatHaveThumbnail.includes(
+    pageId as string,
+  );
   const imageUrl = `https://taeho.io/images/thumbnails/pages/${pageId}.png`;
 
   const pageInfo = getPageInfo(recordMap);

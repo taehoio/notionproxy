@@ -11,9 +11,8 @@ fs.readdirSync('./public/images/thumbnails/pages/').forEach((filename) => {
 });
 
 const nextConfig = {
-  env: {},
-  publicRuntimeConfig: {
-    pageIdsThatHaveThumnail,
+  env: {
+    PAGE_IDS_THAT_HAVE_THUMBNAIL: JSON.stringify(pageIdsThatHaveThumnail),
   },
 };
 

@@ -1,7 +1,6 @@
 // import { promises as fs } from 'fs'
 import * as notion from 'notion-types';
-import ky from 'ky';
-import type { Options as KyOptions } from 'ky';
+type KyOptions = { headers?: Record<string, string> };
 import {
   getBlockCollectionId,
   getPageContentBlockIds,
@@ -636,13 +635,14 @@ export class NotionAPI {
     //  })
     //  .json();
 
-    return ky(url, {
-      method: 'post',
+    return fetch(url, {
+      method: 'POST',
       body: JSON.stringify(body),
       headers,
-      credentials: undefined,
     }).then((res) => {
-      //console.log(endpoint, res);
+      if (!res.ok) {
+        throw new Error(`Notion API error: ${res.status} ${res.statusText}`);
+      }
       return res.json();
     });
   }
