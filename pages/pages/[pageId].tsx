@@ -10,7 +10,6 @@ import {
   addGoogleAnalyticsScript,
   gaTraceId,
   getPageInfo,
-  replaceBitlyLinks,
 } from '../../lib/notionproxy';
 import UtterancesComments from '../../components/UtterancesComments';
 
@@ -53,7 +52,22 @@ const notion = new NotionAPI();
 export const getServerSideProps = async (context) => {
   try {
     const pageId = context.params.pageId as string;
-    const recordMap = replaceBitlyLinks(await notion.getPage(pageId));
+    const recordMap = JSON.parse(
+      JSON.stringify(await notion.getPage(pageId))
+        .replaceAll('https://bit.ly/3w8X8V2', 'https://github.com/xissy')
+        .replaceAll(
+          'https://bit.ly/2S3VoxK',
+          'https://www.linkedin.com/in/xissy/',
+        )
+        .replaceAll(
+          'https://bit.ly/3bybKp3',
+          'https://www.facebook.com/people/Taeho-Kim/100009318936193/',
+        )
+        .replaceAll(
+          'https://bit.ly/3fjgSj2',
+          'https://github.com/taehoio/notionproxy',
+        ),
+    );
     return {
       props: {
         recordMap,

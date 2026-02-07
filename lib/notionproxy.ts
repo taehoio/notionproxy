@@ -72,27 +72,6 @@ export function getPageInfo(recordMap: ExtendedRecordMap): PageInfo {
   };
 }
 
-export function replaceBitlyLinks(
-  recordMap: ExtendedRecordMap,
-): ExtendedRecordMap {
-  return JSON.parse(
-    JSON.stringify(recordMap)
-      .replaceAll('https://bit.ly/3w8X8V2', 'https://github.com/xissy')
-      .replaceAll(
-        'https://bit.ly/2S3VoxK',
-        'https://www.linkedin.com/in/xissy/',
-      )
-      .replaceAll(
-        'https://bit.ly/3bybKp3',
-        'https://www.facebook.com/people/Taeho-Kim/100009318936193/',
-      )
-      .replaceAll(
-        'https://bit.ly/3fjgSj2',
-        'https://github.com/taehoio/notionproxy',
-      ),
-  );
-}
-
 export function addGoogleAnalyticsScript(gaTraceId: string) {
   return {
     __html: `
