@@ -2,21 +2,20 @@
   "name": "notionproxy",
   "version": "0.0.1",
   "private": true,
+  "packageManager": "yarn@1.22.22",
   "engines": {
-    "node": ">=14.8"
+    "node": ">=18"
   },
   "scripts": {
     "dev": "node --require ./server-preload.js ./node_modules/.bin/next dev",
     "build": "next build",
+    "build:cloudflare": "npx @cloudflare/next-on-pages@1",
     "start": "node --require ./server-preload.js ./node_modules/.bin/next start",
     "analyze": "cross-env ANALYZE=true next build",
     "lint": "eslint '**/*.{ts,tsx,js,jsx}'",
     "format": "eslint '**/*.{ts,tsx,js,jsx}' --fix"
   },
   "dependencies": {
-    "@google-cloud/profiler": "5.0.4",
-    "@google-cloud/trace-agent": "^5.1.6",
-    "agentkeepalive": "^4.2.1",
     "eslint-config-next": "^12.2.0",
     "ky": "^0.31.4",
     "ky-universal": "^0.11.0",
@@ -48,6 +47,6 @@
     "prettier": "^2.2.1",
     "start-server-and-test": "^2.0.3",
     "typescript": "^4.7.4",
-    "vercel": "^28.16.11"
+    "vercel": "^50.13.2"
   }
 }
