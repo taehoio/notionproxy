@@ -197,8 +197,9 @@ export class NotionAPI {
               ...normalizeRecordMap(collectionData.recordMap.notion_user),
             };
 
-            recordMap.collection_query![collectionId] = {
-              ...recordMap.collection_query![collectionId],
+            recordMap.collection_query = recordMap.collection_query ?? {};
+            recordMap.collection_query[collectionId] = {
+              ...recordMap.collection_query[collectionId],
               [collectionViewId]: (collectionData.result as any)
                 ?.reducerResults,
             };
