@@ -10,6 +10,7 @@ import {
   addGoogleAnalyticsScript,
   gaTraceId,
   getPageInfo,
+  resolveBitlyLinks,
   rootNotionPageId,
 } from '../lib/notionproxy';
 
@@ -25,6 +26,7 @@ const notion = new NotionAPI();
 export const getServerSideProps = async () => {
   try {
     const recordMap = await notion.getPage(rootNotionPageId);
+    await resolveBitlyLinks(recordMap);
     return {
       props: {
         recordMap,
